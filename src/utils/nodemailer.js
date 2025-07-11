@@ -10,7 +10,7 @@ const sendEmail = async (email, fullname, otp) => {
     });
 
     const mailOptions = {
-      from: "QuanLyKhoHang <hangnguyenthithu32@gmai.com",
+      from: "WareHouse <doantrungminh20@gmail.com>",
       to: email,
       subject: `Xin chào ${fullname}. \n`,
       text: `Mã OTP của bạn là: ${otp}. Đừng chia sẻ với bất kỳ ai!`,
@@ -35,11 +35,11 @@ const sendEmailWhenForgetPassword = async (email, fullname) => {
     });
 
     const mailOptions = {
-      from: "QuanLyKhoHang <hangnguyenthithu32@gmai.com>",
+      from: "WareHouse <doantrungminh20@gmail.com>",
       to: email,
       subject: `Xin chào ${fullname}. \n`,
       //thay đổi đường dẫn khi deploy
-      text: `Bạn đã yêu cầu đổi mật khẩu. Vui lòng truy cập vào đường dẫn sau để đổi mật khẩu: http://localhost:5173/reset-password`,
+      text: `Bạn đã yêu cầu đổi mật khẩu. Vui lòng truy cập vào đường dẫn sau để đổi mật khẩu: http://localhost:3000/auth/resetPassword`,
     };
 
     const result = await transport.sendMail(mailOptions);
