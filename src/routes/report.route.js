@@ -10,8 +10,7 @@ const reportRouter = express.Router();
 
 reportRouter.get(
   "/import-export-inventory",
-  auth, // chỉ cần đăng nhập
-  // roleMiddleware, ❌ tạm thời comment dòng này
+  auth,
   validate(reportValidation.reportExportImportInventory),
   reportController.reportExportImportInventory
 );
