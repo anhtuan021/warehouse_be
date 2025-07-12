@@ -1,17 +1,13 @@
-
 const catchAsync = require("../utils/catchAsync");
 
-const roleMiddleware = catchAsync(async (req, res, next) => {
-  const user = req.user;
+const roleMiddleware = (req, res, next) => {
+  const allowedRoles = ["admin", "manager", "staff"]; // ➕ thêm "staff" vô đây
 
-  if (user.role !== "manager") {
-    return res.status(403).json({
-      message: "Access denied. You are not an manager",
-      code: 403,
-    });
+  if (!allowedRoles.includes(req.user.role)) {
+    return res.status(403).json({ message: "Forbidden" });
   }
 
   next();
-});
+};
 
-module.exports = {roleMiddleware};
+module.exports = { roleMiddleware };
