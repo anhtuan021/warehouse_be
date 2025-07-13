@@ -19,7 +19,6 @@ userRouter.get('/:userId', auth,  validate(userValidation.getUserById), userCont
 userRouter.put('/update-password', validate(userValidation.updatePassword), userController.updatePassword);
 userRouter.post('/forgot-password', validate(userValidation.forgotPassword), userController.forgotPassword);
 userRouter.put('/edit-profile/:userId', auth, validate(userValidation.editProfile), userController.editProfile);
-// userRouter.post('/upload', auth, upload.array('files', 10), uploadFiles);
 userRouter.post('/upload-avatar/:userId', auth, upload.single('avatar'), validate(userValidation.uploadAvatar), userController.uploadAvatar);
 
 module.exports = userRouter;

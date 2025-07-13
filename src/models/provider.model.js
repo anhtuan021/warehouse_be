@@ -21,7 +21,7 @@ const providerSchema = new Schema({
     type: String,
     required: true,
   },
-  //người đại diện
+
   representative: {
     type: String,
     required: true,

@@ -1,4 +1,3 @@
-//phieu nhap kho
 const { Schema, default: mongoose } = require('mongoose');
 
 const importSlipSchema = new Schema({
@@ -32,7 +31,6 @@ const importSlipSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  //cho duyet, da duyet, tu choi, da nhap
   status: {
     type: String,
     enum: ['PENDING', 'CONFIRMED', 'REJECTED', "DONE"],
@@ -54,12 +52,10 @@ const importSlipSchema = new Schema({
       ref: 'Product',
       required: true,
     },
-    //số lượng nhập
     quantity: {
       type: Number,
       required: true,
     },
-    //chiet khau
     discount: {
       type: Number,
       required: true,

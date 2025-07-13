@@ -31,7 +31,7 @@ const createdImportSlip = catchAsync(async (req, res) => {
   const createNewProducts = [];
   if (newProducts && newProducts.length > 0) {
     for (const product of newProducts) {
-      //kiểm tra xem product đã tồn tại chưa
+
       const existingProduct = await Product.findOne({
         productName: product.productName,
       });
@@ -43,7 +43,7 @@ const createdImportSlip = catchAsync(async (req, res) => {
           discount: product.discount,
         });
       } else {
-        //Nếu chưa tồn tại thì tạo mới
+
         const newProduct = new Product({
           productCode: product.productCode,
           productName: product.productName,
@@ -320,7 +320,6 @@ const searchImportSlips = catchAsync(async (req, res) => {
     query.createdAt = { $gte: new Date(timeStart), $lte: new Date(timeEnd) };
   }
 
-  //neu khong co dieu kien tim kiem thi xoa $or de tranh truy van trong, khi do se tra ve tat ca cac phieu nhap
 
   const skip = (+page - 1) * +limit;
 

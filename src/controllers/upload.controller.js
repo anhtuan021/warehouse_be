@@ -38,13 +38,6 @@ const uploadFiles = catchAsync(async (req, res, next) => {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error.message);
   }
 
-  // return res.status(httpStatus.CREATED).json({
-  //   message: 'Files uploaded successfully',
-  //   code: httpStatus.CREATED,
-  //   data: {
-  //     fileUrls,
-  //   },
-  // });
 
 });
 

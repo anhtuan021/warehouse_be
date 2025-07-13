@@ -15,7 +15,7 @@ const productSchema = new Schema({
   },
   productMedia: {
     type: [String],
-    // required: true,
+
   },
   productDescription: {
     type: String,
@@ -30,34 +30,29 @@ const productSchema = new Schema({
     required: true,
   },
   productQuantityImport: {
-    //số lượng đã nhập
+
     type: Number,
     default: 0,
   },
   productQuantityExport: {
-    //số lượng đã bán
+
     type: Number,
     default: 0,
   },
   productQuantityRemaining: {
-    //số lượng còn lại
+
     type: Number,
     default: 0,
   },
   dateOfManufacture: {
-    //ngay san xuat
+
     type: Date,
   },
   expirationDate: {
-    //han su dung
+
     type: Date,
   },
-  // respository: {
 
-  // },
-  // supplierCode: {
-
-  // },
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',

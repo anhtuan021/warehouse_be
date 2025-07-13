@@ -1,6 +1,5 @@
-//phieu xuat kho
-const { Schema, default: mongoose } = require('mongoose');
 
+const { Schema, default: mongoose } = require('mongoose');
 const exportSlipSchema = new Schema({
   exportSlipCode: {
     type: String,
@@ -11,7 +10,7 @@ const exportSlipSchema = new Schema({
     required: true,
     default: Date.now,
   },
-  //nguon nhan
+
   providerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Provider',
@@ -33,7 +32,6 @@ const exportSlipSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  //cho duyet, da duyet, tu choi, da xuất, hoàn hàng
   status: {
     type: String,
     enum: ['PENDING', 'CONFIRMED', 'REJECTED', "DONE", "RETURNED"],
@@ -45,7 +43,7 @@ const exportSlipSchema = new Schema({
     enum: ["Agency", "Provider", "Customer"],
     required: true,
   },
-  //gia xuat
+
   exportPrice: {
     type: String,
     required: true,
@@ -56,12 +54,11 @@ const exportSlipSchema = new Schema({
       ref: 'Product',
       required: true,
     },
-    //số lượng xuat
     quantity: {
       type: Number,
       required: true,
     },
-    //chiet khau
+
     discount: {
       type: Number,
       required: true,

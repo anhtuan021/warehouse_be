@@ -287,12 +287,12 @@ const uploadAvatar = catchAsync(async (req, res) => {
 
   const uploadPromises = new Promise((resolve, reject) => {
     blobStream.on("error", (error) => {
-      // console.error(error);
+
       throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, "Failed to upload avatar!");
     });
 
     blobStream.on("finish", () => {
-      // Không hard code url nhé
+
       const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${encodeURIComponent(bucket.name)}/o/${encodeURIComponent(blob.name)}?alt=media`;
       resolve(publicUrl);
     });

@@ -31,7 +31,7 @@ const createdExportSlip = catchAsync(async (req, res) => {
   const createNewProducts = [];
   if (newProducts && newProducts.length > 0) {
     for (const product of newProducts) {
-      //kiểm tra xem product đã tồn tại chưa
+  
       const existingProduct = await Product.findOne({
         productName: product.productName,
       });
@@ -43,7 +43,7 @@ const createdExportSlip = catchAsync(async (req, res) => {
           discount: product.discount,
         });
       } else {
-        //Nếu chưa tồn tại thì tạo mới
+  
         const newProduct = new Product({
           productCode: product.productCode,
           productName: product.productName,

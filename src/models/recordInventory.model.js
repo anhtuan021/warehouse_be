@@ -1,4 +1,3 @@
-//phieu nhap kho
 const { Schema, default: mongoose } = require("mongoose");
 
 const recordInventorySchema = new Schema(
@@ -29,7 +28,6 @@ const recordInventorySchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    //cho duyet, da duyet, tu choi
     status: {
       type: String,
       enum: ["PENDING", "CONFIRMED", "REJECTED"],
@@ -43,22 +41,22 @@ const recordInventorySchema = new Schema(
           ref: "Product",
           required: true,
         },
-        //số lượng hệ thống
+
         numberOfSystem: {
           type: Number,
           required: true,
         },
-        //số lượng thực tế
+
         numberOfReality: {
           type: Number,
           required: true,
         },
-        //chênh lệch
+
         difference: {
           type: Number,
           required: true,
         },
-        //xử lý
+
         solution: {
           type: String,
         },

@@ -38,7 +38,6 @@ const sendEmailWhenForgetPassword = async (email, fullname) => {
       from: "WareHouse <doantrungminh20@gmail.com>",
       to: email,
       subject: `Xin chào ${fullname}. \n`,
-      //thay đổi đường dẫn khi deploy
       text: `Bạn đã yêu cầu đổi mật khẩu. Vui lòng truy cập vào đường dẫn sau để đổi mật khẩu: http://localhost:3000/auth/resetPassword`,
     };
 

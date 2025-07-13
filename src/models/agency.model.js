@@ -1,6 +1,6 @@
 const { Schema, default: mongoose } = require('mongoose');
 
-//đại lý
+
 const agencySchema = new Schema({
   agencyCode: {
     type: String,
@@ -22,7 +22,7 @@ const agencySchema = new Schema({
     type: String,
     required: true,
   },
-  //người đại diện
+
   representative: {
     type: String,
     required: true,

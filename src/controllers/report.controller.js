@@ -7,7 +7,7 @@ const Product = require("../models/product.model");
 const reportExportImportInventory = catchAsync(async (req, res) => {
   const { timeStart, timeEnd } = req.query;
 
-  // Thiết lập khoảng thời gian
+
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
@@ -18,12 +18,12 @@ const reportExportImportInventory = catchAsync(async (req, res) => {
     },
   };
 
-  // Aggregation để tính số lượng nhập
+
   const importData = await ImportSlip.aggregate([
     { $match: query },
-    // $unwind để tách các sản phẩm ra thành từng dòng
+
     { $unwind: "$products" },
-    // $group để nhóm các sản phẩm theo productId và tính tổng số lượng nhập
+
     {
       $group: {
         _id: "$products.productId",
@@ -32,7 +32,7 @@ const reportExportImportInventory = catchAsync(async (req, res) => {
     },
   ]);
 
-  // Aggregation để tính số lượng xuất
+
   const exportData = await ExportSlip.aggregate([
     { $match: query },
     { $unwind: "$products" },
@@ -61,7 +61,6 @@ const reportExportImportInventory = catchAsync(async (req, res) => {
     productMap.set(item._id.toString(), product);
   });
 
-  // Lấy danh sách sản phẩm và tính số lượng tồn kho
   const productIds = Array.from(productMap.keys());
   const productInfo = await Product.find(
     { _id: { $in: productIds } },
@@ -80,7 +79,6 @@ const reportExportImportInventory = catchAsync(async (req, res) => {
     };
   });
 
-  // Sắp xếp theo số lượng nhập giảm dần
   products.sort((a, b) => b.importQuantity - a.importQuantity);
 
   return res.status(httpStatus.OK).json({
@@ -92,6 +90,6 @@ const reportExportImportInventory = catchAsync(async (req, res) => {
 
 
 module.exports = {
-  // reportImport,
+
   reportExportImportInventory,
 };
